@@ -10,9 +10,4 @@
 
 @implementation NSObject (Shortcuts)
 
--(ApplicationDelegateClass*)appDelegate
-{
-    return (ApplicationDelegateClass*)[[UIApplication sharedApplication] delegate];
-}
-
 @end
