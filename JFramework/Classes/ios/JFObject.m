@@ -222,7 +222,7 @@ static NSMutableDictionary *s_registeredClasses;
         propertyArrayItemClasses = propertyAttributes[kSerializationPropertyArrayItemsClassKey];
     }
 
-    for (NSString *property in [instance metaData].propertyNames) {
+    for (NSString *property in  [instance metaData].propertyNames) {
         Class propertyClass = [[self metaData] classForPropertyNamed:property];
         id value = nil;
         if ([property isEqualToString:@"instanceId"]) {
