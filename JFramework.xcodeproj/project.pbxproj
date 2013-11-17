@@ -39,10 +39,8 @@
 		B3B8D7400EF646E5F43BFE03 /* JFDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8DD880EC7A9735429CD83 /* JFDownloadManager.m */; };
 		B3B8D769621FB704FAB12C9D /* JFObjectMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8D37BE3B63139C8956E67 /* JFObjectMeta.m */; };
 		B3B8D7F4637A91ED105B508B /* JFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8D5955E2F1A6F506A2485 /* JFrameworkTests.m */; };
-		B3B8D7F4A5C78367A84CBAC9 /* JFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8DD54FC93AFCC9C66B5AF /* JFramework.m */; };
 		B3B8D867969A0F39C6ACA52C /* JFRESTTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8D6CF484FE82B5BCA11A2 /* JFRESTTemplate.m */; };
 		B3B8D8952A81CF2AC09AAB85 /* JFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8DC0C16A70B7816DD5A9D /* JFramework.m */; };
-		B3B8D94F072E02870BD738D4 /* JFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = B3B8D18D03BA285E26330648 /* JFramework.h */; };
 		B3B8D99BE531DE0BA47576DB /* libJFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B8DFBE95B7C79878C670AD /* libJFramework.a */; };
 		B3B8DC071759B5EDE5C0E18E /* NSObject+Shortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8D528BB41FFD3E4B40B0C /* NSObject+Shortcuts.m */; };
 		B3B8DC43357B96A4F7EFF1A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B8D25E8684AE5ED5058584 /* Foundation.framework */; };
@@ -85,7 +83,6 @@
 		B3B8D097062A81BD3C41E316 /* NSDictionary+JF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JF.m"; sourceTree = "<group>"; };
 		B3B8D0B5E4BDE4B1E0B94661 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		B3B8D150721498D4463696E8 /* JFUtilNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUtilNetwork.h; sourceTree = "<group>"; };
-		B3B8D18D03BA285E26330648 /* JFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFramework.h; sourceTree = "<group>"; };
 		B3B8D1BF4A1A0950D4A35129 /* NSObject+Shortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Shortcuts.h"; sourceTree = "<group>"; };
 		B3B8D1C20ACE4548C132EE90 /* JFValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFValidator.m; sourceTree = "<group>"; };
 		B3B8D25E8684AE5ED5058584 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -120,7 +117,6 @@
 		B3B8DBC225CC1C016AF639AC /* NSArray+JF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JF.m"; sourceTree = "<group>"; };
 		B3B8DC0C16A70B7816DD5A9D /* JFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFramework.m; sourceTree = "<group>"; };
 		B3B8DCF660F8E55235709FE6 /* JFDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFDownload.h; sourceTree = "<group>"; };
-		B3B8DD54FC93AFCC9C66B5AF /* JFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFramework.m; sourceTree = "<group>"; };
 		B3B8DD8131D4E7AB1E5708DC /* JFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B8DD880EC7A9735429CD83 /* JFDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFDownloadManager.m; sourceTree = "<group>"; };
 		B3B8DDF76A42FC3E50B88927 /* JFRESTService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFRESTService.h; sourceTree = "<group>"; };
@@ -258,8 +254,6 @@
 				B3B8D7F77E1C03B4EED547FA /* JFramework */,
 				B3B8D194F5A7E5A44F10D064 /* JFrameworkTests */,
 				B3B8D570421B1C609FA709F1 /* Classes */,
-				B3B8D18D03BA285E26330648 /* JFramework.h */,
-				B3B8DD54FC93AFCC9C66B5AF /* JFramework.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,7 +289,6 @@
 				894D8DCD1838E6980055A174 /* NSDictionary+JF.h in Headers */,
 				894D8DCE1838E6980055A174 /* JFUtilNetwork.h in Headers */,
 				894D8DCF1838E6980055A174 /* NSData+Base64.h in Headers */,
-				B3B8D94F072E02870BD738D4 /* JFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +398,6 @@
 				B3B8D45CE9DB73B4A7F5044A /* JFValidator.m in Sources */,
 				B3B8D8952A81CF2AC09AAB85 /* JFramework.m in Sources */,
 				B3B8DDA54DBD326D4FA2AF4C /* NSData+Base64.m in Sources */,
-				B3B8D7F4A5C78367A84CBAC9 /* JFramework.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
