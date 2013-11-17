@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = 'https://github.com/jfwork/JFramework'
   s.author       = 'Denis Jajčević'
   s.source       = { :git => 'https://github.com/jfwork/JFramework.git', :tag => s.version.to_s }
-  s.source_files = 'JFramework.{h,m}'
+  s.source_files = 'Classes/*.{h,m}'
   s.requires_arc = true
   s.framework = 'UIKit', 'AdSupport', 'CoreData', 'QuartzCore'
   s.public_header_files = 'Classes/*.h'
