@@ -23,8 +23,8 @@ typedef enum
 @property (nonatomic, retain) NSURLResponse       *p_response;
 @property (nonatomic, retain) NSError             *p_error;
 @property (nonatomic, retain) NSMutableURLRequest *p_request;
-@property (nonatomic, assign) JFMediaType mediaType;
-@property (nonatomic, assign) BOOL        finishBlockMode;
+@property (nonatomic, assign) JFMediaType         mediaType;
+@property (nonatomic, assign) BOOL                finishBlockMode;
 @property (copy, nonatomic) JFDownloadFinishBlock successBlock;
 @property (copy, nonatomic) JFDownloadFinishBlock failedBlock;
 
@@ -32,12 +32,12 @@ typedef enum
 
 @implementation JFDownload
 
-+(JFDownload *)performRequest:(NSURLRequest *) request withSuccessBlock :(JFDownloadFinishBlock)successBlock andFailedBlock:(JFDownloadFinishBlock)failedBlock
++ (JFDownload *)performRequest:(NSURLRequest *)request withSuccessBlock:(JFDownloadFinishBlock)successBlock andFailedBlock:(JFDownloadFinishBlock)failedBlock
 {
     JFDownload *download = [JFDownload new];
     [download downloadDataWithRequest:request];
     download.successBlock = successBlock;
-    download.failedBlock = failedBlock;
+    download.failedBlock  = failedBlock;
     return download;
 }
 
@@ -54,7 +54,7 @@ typedef enum
 {
     self = [self init];
     if (self) {
-        self.successBlock = finishBlock;
+        self.successBlock    = finishBlock;
         self.finishBlockMode = YES;
     }
     return self;
@@ -64,7 +64,7 @@ typedef enum
 {
     self = [self init];
     if (self) {
-        self.successBlock = finishBlock;
+        self.successBlock    = finishBlock;
         self.finishBlockMode = YES;
         [self downloadDataWithRequest:[NSURLRequest requestWithURL:[url URL]]];
     }
@@ -74,7 +74,7 @@ typedef enum
 - (JFDownload *)downloadDataWithRequest:(NSURLRequest *)request
 {
     _mediaType = JFMediaTypeData;
-    self.p_request = [request mutableCopy];
+    self.p_request  = [request mutableCopy];
 //    [self.p_request setValue:self.appDelegate.idForVendor forHTTPHeaderField:@"deviceId"];
 //    [self.p_request setValue:self.appDelegate.idForVendor forHTTPHeaderField:@"deviceToken"];
 //    NSDictionary  *headers = request.allHTTPHeaderFields;
@@ -84,7 +84,7 @@ typedef enum
 //    self.p_request.HTTPMethod = request.HTTPMethod;
 //    self.p_request.HTTPBody   = request.HTTPBody;
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
-    
+
     return self;
 }
 
@@ -127,7 +127,7 @@ typedef enum
     }
     @catch (NSException *exception) {
 //        [[NSString stringWithFormat:@"Download %@ forcely ended with exception: %@", self.request, exception] log];
-        NSError *error = [NSError errorWithDomain:kJFDownloadDomain code:-1 userInfo:@{@"exception":exception}];
+        NSError *error = [NSError errorWithDomain:kJFDownloadDomain code:-1 userInfo:@{@"exception" : exception}];
         [self downloadFailedWithError:error];
     }
     @finally {
@@ -210,7 +210,7 @@ typedef enum
         }
         NSMutableDictionary *userInfo = [NSMutableDictionary new];
         userInfo[NSLocalizedDescriptionKey] = description;
-        userInfo[@"statusCode"] = @(statusCode);
+        userInfo[@"statusCode"]             = @(statusCode);
         NSError *error = [NSError errorWithDomain:kJFDownloadDomain code:-2 userInfo:userInfo];
         [self downloadFailedWithError:error];
     }
@@ -226,7 +226,7 @@ typedef enum
     [self finish];
 }
 
--(void) finish
+- (void)finish
 {
     [self downloadEnded];
 }
@@ -284,7 +284,7 @@ typedef enum
     return self.queue;
 }
 
--(instancetype)startInQueue:(NSOperationQueue *)queue
+- (instancetype)startInQueue:(NSOperationQueue *)queue
 {
     [queue setSuspended:YES];
     [queue addOperation:self];
@@ -293,7 +293,7 @@ typedef enum
     return self;
 }
 
--(instancetype)addOperationDependency:(NSOperation *)op
+- (instancetype)addOperationDependency:(NSOperation *)op
 {
     [self addDependency:op];
     return self;
@@ -305,13 +305,13 @@ typedef enum
     return self;
 }
 
--(instancetype)setDownloadDelegate:(id<JFDownloadDelegate>) delegate
+- (instancetype)setDownloadDelegate:(id <JFDownloadDelegate>)delegate
 {
     self.delegate = delegate;
     return self;
 }
 
--(instancetype)setShouldShowProgressIndicator:(BOOL) show
+- (instancetype)setShouldShowProgressIndicator:(BOOL)show
 {
     self.showProgressIndicator = show;
     return self;
@@ -319,55 +319,59 @@ typedef enum
 
 + (void)ping:(NSString *)url withBlockCallback:(JFDownloadFinishBlock)block
 {
-    NSError *error;
-    NSURLResponse *response;
+    NSError             *error;
+    NSURLResponse       *response;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url URL]];
     request.timeoutInterval = 1;
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     JFDownload *download = [JFDownload new];
-    download.p_error = error;
+    download.p_error    = error;
     download.p_response = response;
-    block(download);
+    block (download);
 }
 
 #pragma mark - delegate helpers
--(void) downloadStarted
+- (void)downloadStarted
 {
     [JFUtilNetwork showNetworkIndicator];
     self.finished = NO;
     if ([self.delegate respondsToSelector:@selector(downloadStarted:)]) {
-        [self.delegate downloadStarted:self];
+        dispatch_async (dispatch_get_main_queue(), ^{
+            [self.delegate downloadStarted:self];
+        });
     }
 }
 
--(void)downloadEnded
+- (void)downloadEnded
 {
     [JFUtilNetwork hideNetworkIndicator];
     self.finished = YES;
     if (!self.resultOnMainThread) {
-        self.successBlock(self);
+        self.successBlock (self);
     }
     else {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.successBlock(self);
+        dispatch_sync (dispatch_get_main_queue(), ^{
+            self.successBlock (self);
         });
     }
     if ([self.delegate respondsToSelector:@selector(downloadEnded:)]) {
-        [self.delegate downloadEnded:self];
+        dispatch_sync (dispatch_get_main_queue(), ^{
+            [self.delegate downloadEnded:self];
+        });
     }
 }
 
--(void) downloadFailedWithError:(NSError*) error
+- (void)downloadFailedWithError:(NSError *)error
 {
     [JFUtilNetwork hideNetworkIndicator];
     self.finished = YES;
-    self.p_error = error;
+    self.p_error  = error;
     if (!self.resultOnMainThread) {
-        self.failedBlock(self);
+        self.failedBlock (self);
     }
     else {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.failedBlock(self);
+        dispatch_sync (dispatch_get_main_queue(), ^{
+            self.failedBlock (self);
         });
     }
     if ([self.delegate respondsToSelector:@selector(downloadFailed:withError:)]) {
