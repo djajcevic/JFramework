@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 // define ApplicationDelegateClass with your application delegate class with import, and remove header import at your app delegate's class implementation in pch file...
-#define ApplicationDelegateClass NSObject
 
 #define FOUNDATION_EXPORT_DECLARATION(name) FOUNDATION_EXPORT NSString *const (name);
 #define FOUNDATION_EXPORT_VALUE(name, value) NSString *const (name) = (value);

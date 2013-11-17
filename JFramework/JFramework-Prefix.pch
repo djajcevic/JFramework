@@ -17,4 +17,5 @@
     #import <AdSupport/AdSupport.h>
     #import <Foundation/Foundation.h>
 
+    #define ApplicationDelegateClass NSObject
 #endif
