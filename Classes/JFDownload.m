@@ -155,7 +155,8 @@ typedef enum
 
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
 {
-    [self downloadStarted];
+    if (response == nil)
+        [self downloadStarted];
     _p_data.length = 0;
     return request;
 }
@@ -227,7 +228,7 @@ typedef enum
 
 -(void) finish
 {
-    [self dowloadEnded];
+    [self downloadEnded];
 }
 
 //-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
@@ -339,7 +340,7 @@ typedef enum
     }
 }
 
--(void) dowloadEnded
+-(void)downloadEnded
 {
     [JFUtilNetwork hideNetworkIndicator];
     self.finished = YES;
