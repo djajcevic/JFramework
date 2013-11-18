@@ -228,6 +228,9 @@ static NSMutableDictionary *s_registeredClasses;
         if ([property isEqualToString:@"instanceId"]) {
             value = dictionary[@"id"];
         }
+        else if ([property isEqualToString:@"instanceDescription"]) {
+            value = dictionary[@"description"];
+        }
         else {
             value = dictionary[property];
         }

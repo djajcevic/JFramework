@@ -3,7 +3,7 @@
 //  Iskon
 //
 //  Created by Denis Jajčević on 16.9.2013..
-//  Copyright (c) 2013. CROZ. All rights reserved.
+//  Copyright (c) 2013. JajcevicFramework. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
