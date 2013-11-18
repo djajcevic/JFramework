@@ -234,7 +234,7 @@ static NSMutableDictionary *s_registeredClasses;
         else {
             value = dictionary[property];
         }
-        NSLog(@"Class:%@, property:%@, dictValueNil:%@", NSStringFromClass([self class]), property, @(value == nil));
+//        NSLog(@"Class:%@, property:%@, dictValueNil:%@", NSStringFromClass([self class]), property, @(value == nil));
         if (value != nil) {
             if ([value isKindOfClass:[NSDictionary class]]) {
                 if ([propertyClass isSubclassOfClass:jfObjectClass]) {
