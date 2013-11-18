@@ -24,4 +24,6 @@
 +(instancetype) fromJsonString:(NSString*) string;
 +(NSArray*) fromJsonArrayString:(NSString*) string;
 
+-(void) afterPropertiesSet;
+
 @end

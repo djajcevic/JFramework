@@ -265,6 +265,7 @@ static NSMutableDictionary *s_registeredClasses;
             }
         }
     }
+    [instance afterPropertiesSet];
     return instance;
 }
 
