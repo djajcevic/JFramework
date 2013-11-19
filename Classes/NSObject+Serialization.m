@@ -150,6 +150,7 @@
     for (NSDictionary *dictionary in dictionaryArray) {
         if (![dictionary isKindOfClass:[NSDictionary class]])
             return dictionaryArray;
+
         [array addObject:[self fromDictionary:dictionary]];
     }
 
