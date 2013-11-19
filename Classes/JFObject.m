@@ -274,6 +274,8 @@ static NSMutableDictionary *s_registeredClasses;
     NSMutableArray *array = [NSMutableArray array];
 
     for (NSDictionary *dictionary in dictionaryArray) {
+        if (![dictionary isKindOfClass:[NSDictionary class]])
+            return dictionaryArray;
         [array addObject:[self fromDictionary:dictionary]];
     }
 
